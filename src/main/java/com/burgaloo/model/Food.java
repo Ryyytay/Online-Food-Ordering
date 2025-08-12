@@ -38,7 +38,7 @@ public class Food {
 
     @ManyToMany
     private List<IngredientsItem> ingredients = new ArrayList<>();
-    
+
     private Date creationDate;
 
 }
