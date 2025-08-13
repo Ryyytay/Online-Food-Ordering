@@ -29,4 +29,9 @@ public class Restaurant {
     @Embedded
     private ContactInformation contactInformation;
 
+    private String openingHours;
+
+    @OneToMany(mappedBy = "restaurant")
+    private List<Order> orders=new ArrayList<>();
+
 }
