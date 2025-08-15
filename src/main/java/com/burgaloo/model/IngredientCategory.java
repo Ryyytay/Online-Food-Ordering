@@ -2,7 +2,6 @@ package com.burgaloo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,19 +10,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class IngredientsItem {
+public class IngredientCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
-    @ManyToOne
-    private IngredientCategory category;
-
     @JsonIgnore
     @ManyToOne
     private Restaurant restaurant;
 
-    private boolean inStoke=true;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<IngredientsItem> ingredients= new ArrayList<>();
 }

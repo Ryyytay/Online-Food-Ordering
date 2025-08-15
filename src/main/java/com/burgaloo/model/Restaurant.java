@@ -31,7 +31,11 @@ public class Restaurant {
 
     private String openingHours;
 
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders=new ArrayList<>();
+
+    @ElementCollection
+    @Column(length = 1000)
+    private List<String>images;
 
 }
