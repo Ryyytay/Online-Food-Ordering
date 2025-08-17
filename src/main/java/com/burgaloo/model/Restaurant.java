@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -15,6 +18,7 @@ public class Restaurant {
     private Long id;
 
     @OneToOne
+    @JoinColumn(name = "owner_id")
     private User owner;
 
     private String name;
@@ -24,6 +28,7 @@ public class Restaurant {
     private String cuisineType;
 
     @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address address;
 
     @Embedded
@@ -35,7 +40,8 @@ public class Restaurant {
     private List<Order> orders=new ArrayList<>();
 
     @ElementCollection
-    @Column(length = 1000)
-    private List<String>images;
+    @CollectionTable(name = "restaurant_images", joinColumns = @JoinColumn(name = "restaurant_id"))
+    @Column(name = "image_url", length = 1000)
+    private List<String> images = new ArrayList<>();
 
 }

@@ -18,6 +18,7 @@ public class Category {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "restaurant_id")
     @JsonIgnore
     private Restaurant restaurant;
 

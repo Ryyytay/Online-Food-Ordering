@@ -1,5 +1,6 @@
 package com.burgaloo.model;
 
+import com.burgaloo.dto.RestaurantDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
