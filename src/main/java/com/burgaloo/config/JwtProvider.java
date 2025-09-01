@@ -44,7 +44,7 @@ public class JwtProvider {
         Set<String> auths = new HashSet<>();
 
         for(GrantedAuthority authority:authorities) {
-            auth.add(authority.getAuthority());
+            auths.add(authority.getAuthority());
         }
         return String.join(",", auths);
     }
