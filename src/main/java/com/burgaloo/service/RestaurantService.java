@@ -1,5 +1,6 @@
 package com.burgaloo.service;
 
+import com.burgaloo.dto.RestaurantDto;
 import com.burgaloo.model.Restaurant;
 import com.burgaloo.model.User;
 import com.burgaloo.request.CreateRestaurantRequest;
@@ -19,5 +20,11 @@ public interface RestaurantService {
     public List<Restaurant> searchRestaurant();
 
     public Restaurant findRestaurantById(Long id) throws Exception;
+
+    public Restaurant getRestaurantByUserId(Long userId) throws Exception;
+
+    public RestaurantDto addToFavorites(Long restaurant_id, User user) throws Exception;
+
+    public Restaurant updateRestaurantStatus(Long id) throws Exception;
 
 }
