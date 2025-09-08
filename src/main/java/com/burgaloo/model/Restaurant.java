@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +19,10 @@ public class Restaurant {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "owner_id")
     private User owner;
 
     private String name;
-
     private String description;
-
     private String cuisineType;
 
     @ManyToOne
@@ -43,5 +41,7 @@ public class Restaurant {
     @CollectionTable(name = "restaurant_images", joinColumns = @JoinColumn(name = "restaurant_id"))
     @Column(name = "image_url", length = 1000)
     private List<String> images = new ArrayList<>();
+
+    private LocalDateTime registrationDate;
 
 }
