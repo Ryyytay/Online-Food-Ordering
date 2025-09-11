@@ -44,4 +44,6 @@ public class Restaurant {
 
     private LocalDateTime registrationDate;
 
+    private boolean open;
+
 }

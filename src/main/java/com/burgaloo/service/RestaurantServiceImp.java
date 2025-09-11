@@ -6,6 +6,7 @@ import com.burgaloo.model.Restaurant;
 import com.burgaloo.model.User;
 import com.burgaloo.repository.AddressRepository;
 import com.burgaloo.repository.RestaurantRepository;
+import com.burgaloo.repository.UserRepository;
 import com.burgaloo.request.CreateRestaurantRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +23,7 @@ public class RestaurantServiceImp implements RestaurantService {
     private AddressRepository addressRepository;
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Override
     public Restaurant createRestaurant(CreateRestaurantRequest req, User user) {
@@ -98,12 +99,29 @@ public class RestaurantServiceImp implements RestaurantService {
     }
 
     @Override
-    public RestaurantDto addToFavorites(Long restaurant_id, User user) throws Exception {
-        return null;
+    public RestaurantDto addToFavorites(Long restaurantId, User user) throws Exception {
+
+        Restaurant restaurant=findRestaurantById(restaurantId);
+
+        RestaurantDto dto = new RestaurantDto();
+        dto.setDescription(restaurant.getDescription());
+        dto.setImages((restaurant.getImages()));
+        dto.setTitle(restaurant.getName());
+        dto.setId(restaurantId);
+
+        if(user.getFavorites().contains(dto)) {
+            user.getFavorites().remove(dto);
+        }
+        else user.getFavorites().add(dto);
+
+        userRepository.save(user);
+        return dto;
     }
 
     @Override
     public Restaurant updateRestaurantStatus(Long id) throws Exception {
-        return null;
+        Restaurant restaurant=findRestaurantById(id);
+        restaurant.setOpen(!restaurant.isOpen());
+        return restaurantRepository.save(restaurant);
     }
 }
