@@ -8,10 +8,9 @@ import com.burgaloo.service.IngredientsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/ingredients")
@@ -28,13 +27,29 @@ public class IngredientController {
         return new ResponseEntity<>(item, HttpStatus.CREATED);
     }
 
-    @PostMapping()
-    public ResponseEntity<IngredientsItem> createIngredientItem(
-            @RequestBody IngredientRequest req
+    @PutMapping("/{id}/stock")
+    public ResponseEntity<IngredientsItem> updateIngredientStock(
+            @PathVariable Long id
     ) throws Exception {
-        IngredientsItem item=ingredientsService.createIngredientItem(req.getRestaurantId(), req.getName(), req.getCategoryId());
-        return new ResponseEntity<>(item, HttpStatus.CREATED);
+        IngredientsItem item=ingredientsService.updateStock(id);
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
-    
+    @GetMapping("/restaurant/{id}")
+    public ResponseEntity<List<IngredientsItem>> getRestaurantIngredient(
+            @PathVariable Long id
+    ) throws Exception {
+        List<IngredientsItem> items=ingredientsService.findRestaurantsIngredients(id);
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    @GetMapping("/restaurant/{id}")
+    public ResponseEntity<List<IngredientsItem>> getRestaurantIngredient(
+            @PathVariable Long id
+    ) throws Exception {
+        List<IngredientsItem> items=ingredientsService.findRestaurantsIngredients(id);
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+
 }
