@@ -27,5 +27,5 @@ public class IngredientsItem {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
-    private boolean inStoke=true;
+    private boolean inStock=true;
 }
