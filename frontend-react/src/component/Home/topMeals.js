@@ -1,0 +1,26 @@
+export const topMeals= [
+    {
+        image:"https://images.pexels.com/photos/1049626/pexels-photo-1049626.jpeg",
+        title:"Pizza"
+    },
+    {
+        image:"https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
+        title:"Burger"
+    },
+    {
+        image:"https://images.pexels.com/photos/1647163/pexels-photo-1647163.jpeg",
+        title:"Sandwich"
+    },
+    {
+        image:"https://images.pexels.com/photos/2313686/pexels-photo-2313686.jpeg?auto=compress&cs=tinysrgb&w=600",
+        title:"Chiken"
+    },
+    {
+        image:"https://images.pexels.com/photos/2764905/pexels-photo-2764905.jpeg?auto=compress&cs=tinysrgb&w=600",
+        title:"Noodles"
+    },
+    {
+        image:"https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg?auto=compress&cs=tinysrgb&w=600",
+        title:"Dosa"
+    }
+]

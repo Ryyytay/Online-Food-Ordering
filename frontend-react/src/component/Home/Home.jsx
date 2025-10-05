@@ -1,4 +1,5 @@
 import "./Home.css"
+import MultiItemCarousel from "./MultiItemCarousel"
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
             <div className='fadeout'>
 
             </div>
+        </section>
+        <section>
+          <MultiItemCarousel/>
         </section>
     </div>
   ) 
