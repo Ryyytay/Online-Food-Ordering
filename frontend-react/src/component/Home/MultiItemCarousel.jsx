@@ -12,7 +12,9 @@ export default function MultiItemCarousel() {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay:true,
-    autoplaySpeed:2000
+    autoplaySpeed:2000,
+    swipeToSlide: true,
+    arrows:false,
   };
   return (
     <div>
@@ -21,7 +23,6 @@ export default function MultiItemCarousel() {
             <CarouselItem 
               image={item.image} 
               title={item.title}/>)}
-          <CarouselItem/>
         </Slider>
     </div>
   )
