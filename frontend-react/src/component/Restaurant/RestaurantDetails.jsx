@@ -2,6 +2,7 @@ import { Divider, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Typogr
 import PlaceIcon from '@mui/icons-material/Place';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { useState } from "react";
+import MenuCard from "./MenuCard";
 
 const categories=[
     "pizza",
@@ -17,6 +18,8 @@ const foodTypes=[
     {label:"Non-Vegetarian", value:"non_vegetarian"},
     {label:"Seasonal", value:"seasonal"}
 ]
+
+const menu = [1,1,1,1,1]
 
 export default function RestaurantDetails() {
     const [foodType,setFoodType] = useState("all")
@@ -116,7 +119,7 @@ export default function RestaurantDetails() {
                 </div>
             </div>
             <div className="space-y-5 lg:w-[80%] lg:pl-10">
-                Menu
+                {menu.map((item) => <MenuCard/>)}
             </div>
         </section>
     </div>
