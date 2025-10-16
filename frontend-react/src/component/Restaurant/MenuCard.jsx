@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Button, Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const demo = [
@@ -12,16 +12,20 @@ const demo = [
     },
     {
         category:"Vegetable",
-        ingredients:"Fresh Vege"
+        ingredients:["Fresh Vege"]
     },
     {
         category:"Bread",
-        ingredients:"Wheat"
+        ingredients:["Wheat"]
     },
     
 ]
 
 export default function MenuCard() {
+    const handleCheckBoxChange = (value) => {
+        console.log("value")
+    }
+
   return (
     <Accordion>
         <AccordionSummary
@@ -44,8 +48,24 @@ export default function MenuCard() {
         </div>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <form>
+            <div className="flex gap-5 flex-wrap">
+                {
+                    demo.map((item) => 
+                        <div>
+                            <p>{item.category}</p>
+                            <FormGroup>
+                                {item.ingredients.map((item) => <FormControlLabel control={<Checkbox onChange={() => handleCheckBoxChange(item)} />} label={item} />) }
+                            
+                            </FormGroup>
+                        </div>
+                    )
+                }
+            </div>
+            <div className="pt-5" >
+                <Button varient="contained" disabled={false} type="submit">{true?"Add to Cart":"Out of Stock"}</Button>
+            </div>
+          </form>
         </AccordionDetails>
     </Accordion>
   )
