@@ -10,7 +10,7 @@ export default function CartItem() {
                 <img className="w-[5rem] h-[5rem] object-cover" 
                 src="https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg" alt="" />
             </div>
-            <div className="flex items-center justify-between lg:w-[70%] ">
+            <div className="flex items-center justify-between lg:w-1.5[70%] ">
                 <div className="space-y-1 lg:space-y-3 w-full">
                     <p>biryani</p>
                     <div className="flex justify-between items-center">
