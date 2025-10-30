@@ -41,12 +41,8 @@ export default function Cart() {
   const createOrderUsingSelectedAddress = () => {}
   const handleOpenAddressModel = () => {setOpen(true)}
   const [open, setOpen] = React.useState(false);
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleSubmit = () => {
-    
-  };
+  const handleClose = () => {setOpen(false)};
+  const handleSubmit = (values) => {console.log("form value", values)};
 
   return (
     <>
@@ -107,7 +103,7 @@ export default function Cart() {
           aria-labelledby="child-modal-title"
           aria-describedby="child-modal-description"
         >
-          <Box sx={{ ...style, width: 200 }}>
+          <Box sx={{ ...style}}>
             <Formik initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
@@ -115,7 +111,7 @@ export default function Cart() {
               {({ errors, touched }) => (
                 <Form>
                   <Grid container spacing={2}>
-                    <Grid item xs={12}>
+                    <Grid item xs={1}>
                       <Field
                         as = {TextField}
                         name="streetAddress"
@@ -160,7 +156,7 @@ export default function Cart() {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      
+                      <Button variant="contained" type="submit" color="primary">Deliver here</Button>
                     </Grid>
                   </Grid>
                 </Form>
