@@ -1,5 +1,10 @@
 import { useState } from "react";
 import ProfileNavigation from "./ProfileNavigation";
+import UserProfile from "./UserProfile";
+import { Route, Routes } from "react-router-dom";
+import Address from "./Address";
+import Favorites from "./Favorites";
+import Events from "./Events";
 
 export default function Profile() {
     const [openSideBar, setOpenSideBar] = useState(false);
@@ -10,7 +15,13 @@ export default function Profile() {
             <ProfileNavigation open={openSideBar}/>
         </div>
         <div className="lg:w-[80%]">
-
+            <Routes>
+                <Route path='/' element={<UserProfile/>}/>
+                <Route path='/orders' element={<UserProfile/>}/>
+                <Route path='/address' element={<Address/>}/>
+                <Route path='/favorites' element={<Favorites/>}/>
+                <Route path='/events' element={<Events/>}/>
+            </Routes>
         </div>
     </div>
   )
